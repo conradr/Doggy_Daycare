@@ -15,6 +15,9 @@ import repositories.staff_repo as staff_repo
 client1 = Client('Fran FurFur', '07884969585', 'fran@furfur.com',
                  '33b Bow Wow Place, Edinburgh', 'Slightly neurotic with a unique laugh')
 
-#client_repo.save(client1)
+# client_repo.save(client1)
 # print(client_repo.select(3).__dict__)
-#client_repo.delete(client1)
+# client_repo.delete(client1)
+client_list = client_repo.show_clients_dogs(2)
+for client in client_list:
+    print(client.__dict__)

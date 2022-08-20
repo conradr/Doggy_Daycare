@@ -49,3 +49,15 @@ def update_client(client):
     values = [client.name, client.tel,
               client.email, client.address, client.notes, client.id]
     run_sql(sql, values)
+
+
+def show_clients_dogs(id):
+    clients_dogs = []
+    sql = "SELECT dogs.* FROM dogs INNER JOIN clients ON clients.id = dogs.owner WHERE clients.id = %s"
+    values = [id]
+    result = run_sql(sql, values)
+    for row in result:
+        dog = Dog(row['name'], row['description'],
+                  row['breed'], row['dob'], row['neutered'], row['vaccinations'], row['checked_in'], 1, row['image'], 1, row['id'], )
+        clients_dogs.append(dog)
+    return clients_dogs
