@@ -42,3 +42,24 @@ def delete_client(id):
     client_object = client_repo.select(id)
     client_repo.delete(client_object)
     return redirect('/clients')
+
+
+@client_blueprint.route('/clients/new')
+def new_client_form():
+    clients = client_repo.select_all()
+    return render_template('clients/client_new.html', clients=clients)
+
+
+@client_blueprint.route('/clients/new', methods=['POST'])
+def save_new_client():
+    client_name = request.form['client_name']
+    client_tel = request.form['client_tel']
+    client_email = request.form['client_email']
+    client_address = request.form['client_address']
+    client_notes = request.form['client_notes']
+    client = Client(client_name, client_tel, client_email,
+                    client_address, client_notes)
+    # author = ar.select_author_by_id(id)
+    # author_object = Author[author_name, id]
+    client_repo.save(client)
+    return redirect('/clients')
