@@ -59,11 +59,20 @@
 </textarea
         >
       </div>
+
       <input type="submit" class="btn btn-primary" value="Save Client" />
     </form>
     <form action="/clients/{{ client.id }}/delete" method="POST">
       <input class="btn red-danger right" type="submit" value="delete" />
     </form>
+    <div>
+      {% for dog in clients_dogs %}
+      <p>{{dog.name}}</p>
+      <p>{{dog.description}}</p>
+      <p>{{dog.dob}}</p>
+      <p>{{dog.breed}}</p>
+      {% endfor %}
+    </div>
   </section>
 </div>
 {% endblock %}

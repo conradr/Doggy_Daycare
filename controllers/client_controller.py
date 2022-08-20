@@ -17,9 +17,10 @@ def all_clients():
 @client_blueprint.route('/clients/<id>/update', methods=['GET'])
 def show_author_edit(id):
     client_object = client_repo.select(id)
+    clients_dogs = client_repo.show_clients_dogs(id)
     # ar.update_author_by_object(author_object)
     # authors = ar.show_all_authors()
-    return render_template('clients/client_edit.html', client=client_object)
+    return render_template('clients/client_edit.html', client=client_object, clients_dogs=clients_dogs)
 
 
 @client_blueprint.route('/clients/<id>', methods=['POST'])
