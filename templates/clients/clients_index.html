@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<section>
+  <div class="hero">
+    <h1 class="title">Client list</h1>
+  </div>
+</section>
+<section>
+  <table class="table">
+    <tr>
+      <th>Client name</th>
+      <th>Client tel</th>
+      <th>Client email</th>
+      <th></th>
+    </tr>
+    {% for client in clients %}
+    <tr>
+      <td>{{client.name }}</td>
+      <td>{{client.tel }}</td>
+      <td>{{client.email }}</td>
+     
+        <td class="edit-buttons">
+        <a class="btn btn-primary" href="/clients/{{client.id}}/update">Edit</a>
+      </td>
+    </tr>
+    {% endfor %} 
+   
+
+    
+    </tr>
+  </table>
+</section>
+
+{% endblock %}
