@@ -59,9 +59,13 @@
 </textarea
         >
       </div>
-
+    <section class="flex">
       <input type="submit" class="btn btn-primary" value="Save Client" />
     </form>
+    <form action="/clients/{{ client.id }}/delete" method="POST">
+      <input class="btn red-danger" type="submit" value="delete" />
+    </form>
+    </section>  
   </section>
 </div>
 {% endblock %}

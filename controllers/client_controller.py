@@ -18,15 +18,27 @@ def all_clients():
 def show_author_edit(id):
     client_object = client_repo.select(id)
     # ar.update_author_by_object(author_object)
-    #authors = ar.show_all_authors()
+    # authors = ar.show_all_authors()
     return render_template('clients/client_edit.html', client=client_object)
 
 
 @client_blueprint.route('/clients/<id>', methods=['POST'])
 def save_update_client(id):
     client_name = request.form['client_name']
-    client = Client(client_name, id)
+    client_tel = request.form['client_tel']
+    client_email = request.form['client_email']
+    client_address = request.form['client_address']
+    client_notes = request.form['client_notes']
+    client = Client(client_name, client_tel, client_email,
+                    client_address, client_notes, id)
     # author = ar.select_author_by_id(id)
     # author_object = Author[author_name, id]
     client_repo.update_client(client)
-    return redirect('/client')
+    return redirect('/clients')
+
+
+@client_blueprint.route('/clients/<id>/delete', methods=['POST'])
+def delete_client(id):
+    client_object = client_repo.select(id)
+    client_repo.delete(client_object)
+    return redirect('/clients')
