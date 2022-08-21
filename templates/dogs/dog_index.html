@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+<section>
+  <div class="hero">
+    <h1 class="title">Dog list</h1>
+  </div>
+</section>
+<section>
+  <table class="table">
+    <tr>
+      <th>Dog image</th>
+      <th>Dog name</th>
+      <th>Dog Breed</th>
+      <th>Dog description</th>
+      <th>Owner</th>
+      <th></th>
+    </tr>
+    {% for dog in dogs %}
+    <tr>
+      <td><img src="{{dog.image}}" class="thumb"/></td>
+      <td>{{dog.name}}</td>
+      <td>{{dog.breed}}</td>
+      <td>{{dog.description}}</td>
+      <th>{{dog.owner.name}}</th>
+        <td class="edit-buttons">
+        <a class="btn btn-primary" href="/dogs/{{dog.id}}">View</a>
+      </td>
+    </tr>
+    {% endfor %} 
+   
+
+    
+    </tr>
+  </table>
+</section>
+
+{% endblock %}

@@ -58,6 +58,6 @@ def show_clients_dogs(id):
     result = run_sql(sql, values)
     for row in result:
         dog = Dog(row['name'], row['description'],
-                  row['breed'], row['dob'], row['neutered'], row['vaccinations'], row['checked_in'], 1, row['image'], 1, row['id'], )
+                  row['breed'], row['dob'], row['neutered'], row['vaccinations'], row['checked_in'], 1, row['image'], 1, row['id'] )
         clients_dogs.append(dog)
     return clients_dogs
