@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block content %}
+<div class="wrapper">
+  <section class="form-left">
+    <h1 class="white">Client detail</h1>
+    <p class="white">Update this Client's details!</p>
+  </section>
+  <section class="form-right">
+    <table class="table">
+      <tr>
+      <td></td>
+      <th>Client Details</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+       <td>{{client.name }}</td>
+        <td></td>
+      
+    </tr>
+    <tr>
+      <th>Telephone</th>
+      <td>{{client.tel }}</td>
+       <th></th>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{client.email }}</td>
+       <th></th>
+    </tr>
+    <tr>
+       <th>Notes</th>
+      <td>{{client.notes }}</td>
+       
+       <td class="edit-buttons">
+        <a class="btn btn-primary" href="/clients/{{client.id}}/update">Edit Client</a>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Dog Details</th>
+      <th></th>
+    </tr>
+  {% for dog in clients_dogs %}
+      <tr>
+      <th>Image</th>
+      <td><img src="{{dog.image}}" class="thumb"/></td>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td>{{dog.name}}</td>
+      <th></th>
+    </tr>
+     <tr>
+      <th>Description</th>
+      <td>{{dog.description}}</td>
+      <th></th>
+    </tr>
+    <tr>
+      <th>D.O.B</th>
+      <td>{{dog.dob}}</td>
+      <th></th>
+    </tr>
+     <tr>
+      <th>Breed</th>
+      <td>{{dog.breed}}</td>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Neutered</th>
+      <td>{{dog.neutered}}</td>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Vaccination</th>
+      <td>{{dog.vaccinations}}</td>
+      <th></th>
+    </tr>
+     <tr>
+      <th>Checked in?</th>
+      <td>{{dog.checked_in}}</td>
+      <th></th>
+    </tr>
+    <tr>
+      <th>Staff Responsible</th>
+      <td>{{dog.staff}}</td>
+       <td class="edit-buttons">
+        <a class="btn btn-primary" href="/clients/{{client.id}}/update">Edit Dog</a>
+      </td>
+    </tr>
+  {% endfor %}
+    
+  </section>
+</div>
+{% endblock %}

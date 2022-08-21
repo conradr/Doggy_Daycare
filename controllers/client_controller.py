@@ -32,10 +32,15 @@ def save_update_client(id):
     client_notes = request.form['client_notes']
     client = Client(client_name, client_tel, client_email,
                     client_address, client_notes, id)
-    # author = ar.select_author_by_id(id)
-    # author_object = Author[author_name, id]
     client_repo.update_client(client)
     return redirect('/clients')
+
+
+@client_blueprint.route('/clients/<id>', methods=['GET'])
+def show_client(id):
+    client_object = client_repo.select(id)
+    clients_dogs = client_repo.show_clients_dogs(id)
+    return render_template('clients/client_show.html', client=client_object, clients_dogs=clients_dogs)
 
 
 @client_blueprint.route('/clients/<id>/delete', methods=['POST'])
