@@ -4,19 +4,22 @@ from models.client_model import Client
 from models.dog_model import Dog
 from models.staff_model import Staff
 import repositories.client_repo as client_repo
+import repositories.staff_repo as staff_repo
 
 
 def select(id):
     client = None
+    staff_member = None
     sql = "SELECT * from dogs WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        owner = client_repo.select(result['owner'])
+        client = client_repo.select(result['owner'])
+        staff_member = staff_repo.select(result['staff'])
         dog = Dog(result['name'], result['description'],
                   result['breed'], result['dob'], result['neutered'], result['vaccinations'],
-                  result['checked_in'], result['staff'], result['image'], owner, result['id'])
+                  result['checked_in'], staff_member, result['image'], client, result['id'])
         return dog
 
 
@@ -27,9 +30,8 @@ def select_all():
 
     for row in results:
         owner = client_repo.select(row['owner'])
-        dog = Dog(row['name'], row['description'],
-                  row['breed'], row['dob'], row['neutered'], row['vaccinations'],
-                  row['checked_in'], row['staff'], row['image'], owner, row['id'])
+        dog = Dog(row['name'], row['description'], row['breed'], row['dob'], row['neutered'],
+                  row['vaccinations'], row['checked_in'], row['staff'], row['image'], owner, row['id'])
         dogs.append(dog)
     return dogs
 
@@ -37,7 +39,7 @@ def select_all():
 def save(dog):
     sql = "INSERT INTO dogs(name, description, breed, dob, neutered, vaccinations, checked_in, staff, image, owner) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"
     values = [dog.name, dog.description,
-              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff, dog.image, dog.owner]
+              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff, dog.image, dog.owner.id]
     result = run_sql(sql, values)
     dog.id = result[0]['id']
     return dog
@@ -52,8 +54,17 @@ def delete(dog):
 def update_dog(dog):
     sql = "UPDATE dogs SET (name, description, breed, dob, neutered, vaccinations, checked_in, staff, image, owner) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [dog.name, dog.description,
-              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff, dog.image, dog.owner, dog.id]
+              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff, dog.image, dog.owner.id, dog.id]
     run_sql(sql, values)
+
+
+def check_dog_in_or_out(id):
+    dog_to_check_in = select(id)
+    if dog_to_check_in.checked_in == False:
+        dog_to_check_in.checked_in = True
+    else:
+        dog_to_check_in.checked_in = False
+    return dog_to_check_in
 
 
 # def show_dogs_owner():

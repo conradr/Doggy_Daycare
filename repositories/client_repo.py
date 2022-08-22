@@ -6,7 +6,7 @@ from models.staff_model import Staff
 
 
 def select(id):
-    client = None
+    result = None
     sql = "SELECT * from clients WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
@@ -58,6 +58,6 @@ def show_clients_dogs(id):
     result = run_sql(sql, values)
     for row in result:
         dog = Dog(row['name'], row['description'],
-                  row['breed'], row['dob'], row['neutered'], row['vaccinations'], row['checked_in'], 1, row['image'], 1, row['id'] )
+                  row['breed'], row['dob'], row['neutered'], row['vaccinations'], row['checked_in'], 1, row['image'], 1, row['id'])
         clients_dogs.append(dog)
     return clients_dogs

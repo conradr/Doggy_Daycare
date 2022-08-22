@@ -1,68 +1,130 @@
 {% extends "base.html" %} {% block content %}
+
 <div class="wrapper">
   <section class="form-left">
-    <h1 class="white">Edit Client</h1>
-    <p class="white">Update this Client's details!</p>
+    <h1 class="white">Edit Dog</h1>
+    <p class="white">Update this Dog's details!</p>
   </section>
   <section class="form-right">
-    <form action="/clients/{{client.id}}" method="post">
+    <form action="/dogs/{{dog.id}}" method="post">
       <div class="form-field">
-        <label for="client_name">Client Name</label><br />
+        <label for="client_name">Dog Name</label><br />
         <input
           class="form-control"
           type="text"
-          name="client_name"
-          id="client_name"
-          value="{{client.name}}"
+          name="dog_name"
+          id="dog_name"
+          value="{{dog.name}}"
         />
       </div>
       <div class="form-field">
-        <label for="client_tel">Telephone</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_tel"
-          id="client_tel"
-          value="{{client.tel}}"
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_email">Email</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_email"
-          id="client_email"
-          value="{{client.email}}"
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_address">Address</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_address"
-          id="client_address"
-          value="{{client.address}}"
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_notes">Notes</label><br />
+        <label for="client_notes">Description</label><br />
         <textarea
           class="form-control"
-          id="client_notes"
-          name="client_notes"
+          id="dog_description"
+          name="dog_description"
           rows="8"
           cols="50"
         >
-{{client.notes}}
+{{dog.description}}
 </textarea
         >
       </div>
 
+      <div class="form-field">
+        <label for="client_email">D.O.B</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="dog_dob"
+          id="dog_dob"
+          value="{{dog.dob}}"
+        />
+      </div>
+      <div class="form-field">
+        <label for="client_address">Breed</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="dog_breed"
+          id="dog_breed"
+          value="{{dog.breed}}"
+        />
+      </div>
+      <div class="form-field">
+        <label for="dog_neutered">Neutered</label>
+
+        <select class="form-control" name="dog_neutered" id="dog_neutered">
+          {% if dog.neutered %}
+          <option value="True" selected="selected">Yes</option>
+          <option value="False">No</option>
+          {% else %}
+          <option value="True">Yes</option>
+          <option value="False" selected="selected">No</option>
+          {% endif %}
+        </select>
+      </div>
+      <!--neutered-->
+      <div class="form-field">
+        <label for="client_tel">Vaccination</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="dog_vaccinations"
+          id="dog_dvaccinations"
+          value="{{dog.vaccinations}}"
+        />
+      </div>
+      <!--owner-->
+      <div class="form-field">
+        <label for="dog_owner">Owner</label>
+        <select class="form-control" name="dog_owner" id="dog_owner">
+          {% for client in all_clients %}
+            
+          <option value="{{client.name}}" {% if client.name == dog.owner.name %} selected="selected"{% endif %}>{{client.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+       <div class="form-field">
+        <label for="staff_responsible">Staff responsible</label>
+        <select class="form-control" name="staff_responsible" id="staff_responsible">
+          {% for staff_member in all_staff %}
+            
+          <option value="{{staff_member.name}}" {% if staff_member.name == dog.staff.name %} selected="selected"{% endif %}>{{staff_member.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
       <input type="submit" class="btn btn-primary" value="Save Client" />
     </form>
-    <form action="/clients/{{ client.id }}/delete" method="POST">
+    <!--checcked in-->
+    {% if dog.checked_in%}
+
+    <div class="status">
+      <p class="pill green">Checked in</p>
+
+      <form
+        class="form-inline"
+        action="/dogs/{{ dog.id }}/checkin_out"
+        method="POST"
+      >
+        <input class="btn btn-primary" type="submit" value="Check out" />
+      </form>
+    </div>
+
+    {% else %}
+
+    <div class="status">
+      <p class="pill red">Checked out</p>
+      <form
+        class="form-inline"
+        action="/dogs/{{ dog.id }}/checkin_out"
+        method="POST"
+      >
+        <input class="btn btn-primary" type="submit" value="Check in" />
+      </form>
+    </div>
+    {% endif %}
+    <form action="/dogs/{{ dog.id }}/delete" method="POST">
       <input class="btn red-danger right" type="submit" value="delete" />
     </form>
   </section>
