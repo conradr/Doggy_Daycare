@@ -13,9 +13,10 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
+        owner = client_repo.select(result['owner'])
         dog = Dog(result['name'], result['description'],
                   result['breed'], result['dob'], result['neutered'], result['vaccinations'],
-                  result['checked_in'], result['staff'], result['image'], result['owner'], result['id'])
+                  result['checked_in'], result['staff'], result['image'], owner, result['id'])
         return dog
 
 

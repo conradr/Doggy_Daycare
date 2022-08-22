@@ -12,3 +12,9 @@ dog_blueprint = Blueprint("dog", __name__)
 def all_dogs():
     dogs = dog_repo.select_all()
     return render_template('dogs/dog_index.html', dogs=dogs)
+
+
+@dog_blueprint.route('/dogs/<id>', methods=['GET'])
+def show_dog(id):
+    dog_object = dog_repo.select(id)
+    return render_template('dogs/dog_show.html', dog=dog_object)

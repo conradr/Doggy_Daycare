@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block content %}
+<div class="wrapper">
+  <section class="form-left">
+    <h1 class="white">Edit Client</h1>
+    <p class="white">Update this Client's details!</p>
+  </section>
+  <section class="form-right">
+    <form action="/clients/{{client.id}}" method="post">
+      <div class="form-field">
+        <label for="client_name">Client Name</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="client_name"
+          id="client_name"
+          value="{{client.name}}"
+        />
+      </div>
+      <div class="form-field">
+        <label for="client_tel">Telephone</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="client_tel"
+          id="client_tel"
+          value="{{client.tel}}"
+        />
+      </div>
+      <div class="form-field">
+        <label for="client_email">Email</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="client_email"
+          id="client_email"
+          value="{{client.email}}"
+        />
+      </div>
+      <div class="form-field">
+        <label for="client_address">Address</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="client_address"
+          id="client_address"
+          value="{{client.address}}"
+        />
+      </div>
+      <div class="form-field">
+        <label for="client_notes">Notes</label><br />
+        <textarea
+          class="form-control"
+          id="client_notes"
+          name="client_notes"
+          rows="8"
+          cols="50"
+        >
+{{client.notes}}
+</textarea
+        >
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Save Client" />
+    </form>
+    <form action="/clients/{{ client.id }}/delete" method="POST">
+      <input class="btn red-danger right" type="submit" value="delete" />
+    </form>
+  </section>
+</div>
+{% endblock %}
