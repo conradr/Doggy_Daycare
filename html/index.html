@@ -21,54 +21,243 @@
     </header>
 
     <main>
+      <!-- Dog Section-->
       <section>
-        <div class="section-header">
+        <div class="section-header pink">
           <h2>Doggos</h2>
         </div>
-        <div class="section-main">
-          <div class="card">
-            <div class="card-inner-top">
-              <img class="card-image" src="https://placedog.net/150/150?id=6" />
-              <h3>Flo</h3>
+        <div class="section-main yellow">
+          <h2>Who's in the house</h2>
+          <div class="section-inner">
+            <div class="card pink">
+              <div class="card-inner-top">
+                <img
+                  class="card-image"
+                  src="https://placedog.net/150/150?id=6"
+                />
+                <h3>Flo</h3>
+              </div>
+              <div class="card-inner-bottom">
+                <p>
+                  What a little sweetie. Can be a little nervous around big
+                  dogs.
+                </p>
+              </div>
+              <div class="card-inner-footer">
+                <a href="#" class="button yellow">More deets</a>
+              </div>
             </div>
-            <div class="card-inner-bottom">
-              <p>
-                What a little sweetie. Can be a little nervous around big dogs.
-              </p>
+            <div class="card pink">
+              <div class="card-inner-top">
+                <img
+                  class="card-image"
+                  src="https://placedog.net/150/150?id=6"
+                />
+                <h3>Flo</h3>
+              </div>
+              <div class="card-inner-bottom">
+                <p>
+                  What a little sweetie. Can be a little nervous around big
+                  dogs.
+                </p>
+              </div>
+              <div class="card-inner-footer">
+                <a href="#" class="button yellow">More deets</a>
+              </div>
             </div>
-            <div class="card-inner-footer">
-              <a href="#" class="button">More deets</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-inner-top">
-              <img class="card-image" src="https://placedog.net/150/150?id=6" />
-              <h3>Flo</h3>
-            </div>
-            <div class="card-inner-bottom">
-              <p>
-                What a little sweetie. Can be a little nervous around big dogs.
-              </p>
-            </div>
-            <div class="card-inner-footer">
-              <a href="#" class="button">More deets</a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-inner-top">
-              <img class="card-image" src="https://placedog.net/150/150?id=6" />
-              <h3>Flo</h3>
-            </div>
-            <div class="card-inner-bottom">
-              <p>
-                What a little sweetie. Can be a little nervous around big dogs.
-              </p>
-            </div>
-            <div class="card-inner-footer">
-              <a href="#" class="button">More deets</a>
+            <div class="card pink">
+              <div class="card-inner-top">
+                <img
+                  class="card-image"
+                  src="https://placedog.net/150/150?id=6"
+                />
+                <h3>Flo</h3>
+              </div>
+              <div class="card-inner-bottom">
+                <p>
+                  What a little sweetie. Can be a little nervous around big
+                  dogs.
+                </p>
+              </div>
+              <div class="card-inner-footer">
+                <a href="#" class="button yellow">More deets</a>
+              </div>
             </div>
           </div>
         </div>
+      </section>
+      <!-- Client Section -->
+      <section>
+        <div class="section-header purple">
+          <h2>Clients</h2>
+        </div>
+        <div class="section-main yellow">
+          <h2>Who's paying the bills</h2>
+          <div class="section">
+            <table class="table">
+              <tr class="table-header">
+                <th>Doggo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Notes</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>Flo</td>
+                <td>Mary Fleabody</td>
+                <td>mary@fleabody.com</td>
+                <td>07433198902</td>
+                <td>Lovely lady with the blue rinse</td>
+                <td><a href="#" class="button purple">More deets</a></td>
+              </tr>
+              <tr>
+                <td>Flo</td>
+                <td>Mary Fleabody</td>
+                <td>mary@fleabody.com</td>
+                <td>07433198902</td>
+                <td>Lovely lady with the blue rinse</td>
+                <td><a href="#" class="button purple">More deets</a></td>
+              </tr>
+              <tr>
+                <td>Flo</td>
+                <td>Mary Fleabody</td>
+                <td>mary@fleabody.com</td>
+                <td>07433198902</td>
+                <td>Lovely lady with the blue rinse</td>
+                <td><a href="#" class="button purple">More deets</a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+      <!--show a dog-->
+      <!-- Client Section -->
+      <section>
+        <div class="section-header purple">
+          <h2>Edit Mary Fleabody</h2>
+        </div>
+        <div class="section-main yellow">
+          <h2>Fill in the new deets</h2>
+          <div class="field-list">
+            <div class="section">
+              <img
+                class="section-image"
+                src="https://placedog.net/300/300?id=9"
+              />
+              
+            </div>
+            <div class="fields">
+              <form action="/clients/{{client.id}}" method="post">
+                <div class="form-field">
+                  <label for="client_name">Client Name</label><br />
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="client_name"
+                    id="client_name"
+                    value="{{client.name}}"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="client_tel">Telephone</label><br />
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="client_tel"
+                    id="client_tel"
+                    value="{{client.tel}}"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="client_email">Email</label><br />
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="client_email"
+                    id="client_email"
+                    value="{{client.email}}"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="client_address">Address</label><br />
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="client_address"
+                    id="client_address"
+                    value="{{client.address}}"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="client_notes">Notes</label><br />
+                  <textarea
+                    class="form-control"
+                    id="client_notes"
+                    name="client_notes"
+                    rows="8"
+                    cols="50"
+                  >
+{{client.notes}}
+</textarea
+                  >
+                </div>
+
+                <input
+                  type="submit"
+                  class="button purple right margin"
+                  value="Save Client"
+                />
+              </form>
+            </div>
+            <div class="slogan ">
+              <h5 class="catchline">
+                ANYTHING IS PAWSIBLE WHEN YOU HAVE A DOG!
+              </h5>
+              <form action="/clients/{{ client.id }}/delete" method="POST">
+                <input class="button red right" type="submit" value="delete" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Client Section -->
+      <section>
+        <h2>Mary's dogs</h2>
+      </section>
+      <section>
+        <div class="section-header purple">
+          <h2>Flo Fleabody</h2>
+        </div>
+        <div class="section-main yellow">
+          <h2>Fill in the new deets</h2>
+          
+            <div class="section">
+                <div class="field-list">
+                    
+                <div class="section">
+                    <img class="section-image"
+                    src="https://placedog.net/300/300?id=9" />
+                
+                </div>
+                <div class="details">
+                    <div class="attributes">
+                        <h4>Name</h4>
+                    </div>
+                    <div class="values">
+                        <p>Flo</p>
+
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+   <a href="#" class="button purple more">More deets</a>
+        </div>
+      <section>
+        <footer>
+          <h3>WHAT DOES THE PUP EAT AT THE MOVIES? PUPCORN!</h3>
+        </footer>
       </section>
     </main>
   </body>

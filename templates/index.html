@@ -1,50 +1,68 @@
 {% extends "base.html"%} {% block content %}
+<!-- Dog Section-->
 <section>
-  <div class="hero">
-    <h1 class="title">Dog currently checked in</h1>
-    <a class="btn btn-primary" href="/dogs">Check in more Dogs</a>
+  <div class="section-header pink">
+    <h2>Doggos</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Who's in the house</h2>
+    <div class="section-inner">
+      {% for dog in dogs %} {% if dog.checked_in %}
+      <div class="card pink">
+        <div class="card-inner-top">
+          <img class="card-image" src="{{dog.image}}" />
+          <h3>{{dog.name}}</h3>
+        </div>
+        <div class="card-inner-bottom">
+          <p>{{dog.description}}</p>
+        </div>
+        <div class="card-inner-footer">
+          <form
+            class="form-inline"
+            action="/dogs/{{ dog.id }}/checkout"
+            method="POST"
+          >
+            <input class="button yellow" type="submit" value="Check out" />
+          </form>
+        </div>
+      </div>
+      {% endif %} {% endfor %}
+    </div>
   </div>
 </section>
-<section>
-  <table class="table">
-    <tr>
-      <th>Dog image</th>
-      <th>Dog name</th>
-      <th>Dog Breed</th>
-      <th>Dog description</th>
-      <th>Check in/out</th>
-      <th>Owner</th>
-      <th></th>
-    </tr>
-    {% for dog in dogs %}
-    
-    {% if dog.checked_in %}
-    <tr>
-      <td><img src="{{dog.image}}" class="thumb"/></td>
-      <td>{{dog.name}}</td>
-      <td>{{dog.breed}}</td>
-      <td>{{dog.description}}</td>
-      <td>
-      <form
-        class="form-inline"
-        action="/dogs/{{ dog.id }}/checkout"
-        method="POST"
-      >
-        <input class="btn btn-primary" type="submit" value="Check out" />
-      </form>
-</td>
 
-      <th>{{dog.owner.name}}</th>
-        <td class="edit-buttons">
-        <a class="btn btn-primary" href="/dogs/{{dog.id}}">View</a>
-      </td>
-    </tr>
-     {% endif %}
-     {% endfor %}
-    </tr>
-  </table>
-    
+<!-- Client Section -->
+<section>
+  <div class="section-header purple">
+    <h2>Clients</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Who's paying the bills</h2>
+    <div class="section">
+      <table class="table">
+        <tr class="table-header">
+          <th>Name</th>
+          <th>Email</th>
+          <th>Telephone</th>
+          <th>Notes</th>
+          <th></th>
+        </tr>
+        {% for client in clients %}
+        <tr>
+          <td>{{client.name }}</td>
+          <td>{{client.email }}</td>
+          <td>{{client.tel }}</td>
+          <td>{{client.notes }}</td>
+          <td>
+            <a href="/clients/{{client.id}}" class="button purple"
+              >More deets</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
 </section>
-    
 
 {% endblock %}

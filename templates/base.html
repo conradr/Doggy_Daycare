@@ -8,24 +8,25 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
-    <title>Doggy daycare</title>
+    <title>Doggy Dacare</title>
   </head>
   <body>
-    <!-- header-start -->
-    <header>
-      <div id="logo"><a href="/">Doggy daycare</a></div>
+    <header class="header">
+      <div class="logo">
+        <h1 class="logo-text">Barking Mad Daycare</h1>
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li class="nav"><a href="/dogs">Doggos</a></li>
+          <li class="nav"><a href="/clients">Hoomans</a></li>
+        </ul>
+      </nav>
     </header>
-    <nav>
-      <ul class="main-nav">
-        <li><a href="/clients">Clients</a></li>
-        <li><a href="/clients/new">New Client</a></li>
-        <li><a href="/dogs">Dogs</a></li>
-        <li><a href="/dogs/new">New Dog</a></li>
-        <li><a href="/staff">Staff</a></li>
-        <li><a href="/staff/new">New Staff</a></li>
-      </ul>
-    </nav>
-    <!-- header-end -->
-    {% block content %} {% endblock %}
+    <main>{% block content %} {% endblock %}</main>
+    <section>
+      <footer>
+        <h3>WHAT DOES THE PUP EAT AT THE MOVIES? PUPCORN!</h3>
+      </footer>
+    </section>
   </body>
 </html>

@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   height: 100vh;
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  background-color: #fad92f;
 }
 
 ul {
@@ -25,172 +28,162 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
   padding: 0;
   margin: 0;
+  letter-spacing: 0.0225em;
+  font-weight: 100;
 }
 p {
   font-size: 1.1em;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 h1 {
-  font-size: 1.6em;
+  font-size: 5rem;
 }
 h2 {
-  font-size: 1.2em;
+  font-size: 4rem;
 }
 h3 {
-  font-size: 1.2em;
+  font-size: 3rem;
 }
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100vh;
-}
-
-.title {
-  font-size: 1.6em;
-  font-weight: 600;
-}
-
-.author {
-  font-size: 1.3em;
-  font-style: italic;
-  font-weight: 400;
-}
-
-.pill {
+input[type='submit'] {
   border: none;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 10px;
-  font-size: 0.9em;
-
-  border-radius: 16px;
-}
-.purple {
-  background-color: rgb(80, 78, 109);
-  color: rgb(255, 255, 255);
-}
-.green {
-  background-color: rgb(78, 109, 92);
-  color: rgb(255, 255, 255);
-}
-.red {
-  background-color: rgb(109, 78, 79);
-  color: rgb(255, 255, 255);
-}
-.white {
-  color: rgb(255, 255, 255);
-  text-align: right;
-}
-.btn {
-  display: inline-block;
-  font-weight: 400;
-  color: #495057;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: 0.25rem 0.7rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  border-radius: 0.2rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
   cursor: pointer;
 }
-.btn-primary {
-  color: #fff;
-  background-color: #6747f7;
-  border-color: #6747f7;
+.strong {
+  font-weight: 600;
 }
-.btn-primary:hover {
-  color: #fff;
-  background-color: #442ea4;
-  border-color: #442ea4;
-}
-
-.red-danger {
-  background-color: rgb(179, 24, 29);
-  color: rgb(255, 255, 255);
-}
-
-#logo {
-  background-color: rgb(51, 148, 157);
-  color: white;
-  font-size: 1.4em;
-  padding: 1.5rem 1.5rem;
-}
-#logo a {
-  color: white;
-}
-.main-nav {
+.header {
   display: flex;
-  background-color: rgb(51, 102, 157);
-  font-size: 1.2em;
-  padding: 1.5rem;
+  justify-content: space-between;
 }
 
-.main-nav a {
-  color: aliceblue;
-  padding-right: 2rem;
-}
-.main-left {
-  padding: 20px;
-}
-.main-right {
-  padding: 20px;
-}
-.hero {
-  margin: 1.2em;
+.nav-list {
+  display: flex;
+  padding: 15px;
 }
 
-.book-item {
-  background-color: rgb(239, 239, 239);
-  padding: 0.2em;
+.nav {
+  padding: 20px;
+  font-size: 2em;
+  font-family: 'League Gothic';
+}
+.nav > a {
+  color: #212120;
+}
+.logo {
+  background-color: #212120;
+  padding: 15px;
+  margin-left: 40px;
+}
+
+.logo-text {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+section {
+  padding: 2.2em;
+}
+
+.section-header {
+  padding: 10px;
+  border-top: 5px solid #212120;
+  border-left: 5px solid #212120;
+  border-right: 10px solid #212120;
+}
+
+.section-header > h2 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.section-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.section-main {
+  padding: 10px;
+  border-top: 5px solid #212120;
+  border-left: 5px solid #212120;
+  border-right: 10px solid #212120;
+  border-bottom: 10px solid #212120;
+}
+
+.section-main > h2 {
+  font-size: 2rem;
   margin-bottom: 5px;
-  display: flex;
-  align-items: center;
+}
+.section-image {
+  width: 300px;
 }
 
-.book-item > div {
-  margin-left: 20px;
-  min-width: 90px;
-}
-.thumb {
-  width: 90px;
+.card {
+  padding: 10px;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
 }
 
-.cover {
-  width: 400px;
+.card-inner-top {
+  display: flex;
+  flex-grow: 1;
 }
 
-.status {
-  display: flex;
-  align-items: center;
+.card-inner-top > h3 {
+  color: #ffffff;
+  padding-left: 10px;
 }
-.form {
-  display: flex;
+
+.card-image {
+  width: 150px;
 }
-.form-field {
+
+.card-inner-bottom {
+  background-color: #ffffff;
+  padding: 5px;
+  margin-top: 10px;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
   margin-bottom: 20px;
 }
 
-.form-left {
-  background-color: #442ea4;
+.card-inner-footer {
+  text-align: right;
+  padding: 5px;
+}
+.button {
+  font-family: 'League Gothic';
+  padding: 5px;
+  font-size: 1.4em;
+  color: #212120;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
+}
+.pink {
+  background-color: #ff1192;
+}
+.yellow {
+  background-color: #faff11;
+}
+.purple {
+  background-color: #7a11ff;
+  color: #ffffff;
+}
+.red {
+  background-color: #ff1158;
+  color: #ffffff;
+}
+
+.fields {
   padding: 20px;
 }
 
-.form-right {
-  background-color: #f8f9fa;
-  padding: 20px;
-}
 .form-control {
   display: block;
   width: 90%;
@@ -206,55 +199,125 @@ h3 {
   border-radius: 0.2rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 40%;
-  padding: 10px;
-}
-
 .right {
   float: right;
-  margin-right: 40px;
+}
+.left {
+  float: left;
+}
+.margin {
+  margin: 20px;
+}
+.slogan {
+  width: 30%;
+}
+.catchline {
+  font-size: 5em;
 }
 
-table.table {
+.details {
+  display: flex;
+  align-items: center;
+  background-color: #faf6f6;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
+  margin: 20px;
+  width: 70%;
+}
+.attributes {
+  padding: 20px;
+}
+.values {
+  padding: 20px;
+}
+table {
   width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
+  border-spacing: 0;
+  background-color: #faf6f6;
+}
+.table-header {
+  background-color: #7a11ff;
+  color: #ffffff;
 }
 
-.table th,
-.table td {
-  text-align: center;
-  padding: 0.25em;
-  background-color: #f2f2f2;
+th {
+  font-family: 'League Gothic';
+  letter-spacing: 0.0225em;
+  font-size: 1.3em;
+  padding: 20px;
+  background-color: #5f4186;
+  text-align: left;
 }
 
-.table tr {
-  border-bottom: 1px solid #ddd;
+td {
+  padding: 20px;
+  font-size: 1.1em;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
-td.edit-buttons {
+
+tr:nth-child(odd) {
+  background-color: #f0e7e7;
+}
+tr {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+td,
+th {
+  flex: 1 1 150px;
+}
+td.edit-buttons,
+td.empty {
+  flex: 1 0 90%;
   text-align: center;
 }
-@media screen and (max-width: 800px) {
+.more {
+  float: right;
+  position: relative;
+  margin-top: -40px;
+}
+footer h3 {
+  text-align: center;
+}
+@media only screen and (min-width: 800px) {
+  .logo-text {
+    font-size: 3rem;
+  }
+  .field-list {
+    display: flex;
+    margin-bottom: 40px;
+  }
+  .section-header > h2 {
+    font-size: 3rem;
+    color: #ffffff;
+  }
+  .section-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
   tr {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0.5em 0;
-    border: 1px solid rgba(3, 3, 3, 0.2);
   }
   td,
   th {
     flex: 1 1 150px;
-    border: 0.5px solid rgba(3, 3, 3, 0.2);
   }
   td.edit-buttons,
   td.empty {
-    /*flex: 1 0 90%;
-    text-align: center;*/
+    flex: 1 0 90%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .section-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
   }
 }

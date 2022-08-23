@@ -1,29 +1,31 @@
 {% extends "base.html" %} {% block content %}
+
+<!-- Client Section -->
 <section>
-  <div class="hero">
-    <h1 class="title">Dog list</h1>
-    {% with messages = get_flashed_messages() %}
+  <div class="section-header pink">
+    <h2>Doggos</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>All the hounds</h2>
+     {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for msg in messages %}
         <p>{{msg}}</p>
         {% endfor %}
       {% endif %}
     {% endwith %}
-
-  </div>
-</section>
-<section>
-  <table class="table">
-    <tr>
-      <th>Dog image</th>
-      <th>Dog name</th>
-      <th>Dog Breed</th>
-      <th>Dog description</th>
-      <th>Check in/out</th>
-      <th>Owner</th>
-      <th></th>
-    </tr>
-    {% for dog in dogs %}
+    <div class="section">
+      <table class="table">
+        <tr class="table-header">
+         <th>Dog image</th>
+         <th>Dog name</th>
+        <th>Dog Breed</th>
+        <th>Dog description</th>
+        <th>Check in/out</th>
+        <th>Owner</th>
+          <th></th>
+        </tr>
+        {% for dog in dogs %}
     <tr>
       <td><img src="{{dog.image}}" class="thumb"/></td>
       <td>{{dog.name}}</td>
@@ -37,8 +39,9 @@
         action="/dogs/{{ dog.id }}/checkout"
         method="POST"
       >
-        <input class="btn btn-primary" type="submit" value="Check out" />
-      </form>
+        <input class="button yellow" type="submit" value="Check out" />
+      </form> <br />
+      <a class="button yellow" href="/dogs/{{dog.id}}">View</a>
 </td>
     {% else %}
     <td>
@@ -47,22 +50,22 @@
         action="/dogs/{{ dog.id }}/checkin"
         method="POST"
       >
-        <input class="btn btn-primary" type="submit" value="Check in" />
-      </form>
+        <input class="button yellow" type="submit" value="Check in" /> 
+      </form><br />
+      <a class="button yellow" href="/dogs/{{dog.id}}">View</a>
       </td>
     {% endif %}
 
-      <th>{{dog.owner.name}}</th>
-        <td class="edit-buttons">
-        <a class="btn btn-primary" href="/dogs/{{dog.id}}">View</a>
-      </td>
+      <td>{{dog.owner.name}}</td>
     </tr>
     {% endfor %} 
    
 
     
     </tr>
-  </table>
+      </table>
+    </div>
+  </div>
 </section>
 
 {% endblock %}
