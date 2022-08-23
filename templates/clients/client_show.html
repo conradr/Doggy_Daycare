@@ -1,96 +1,88 @@
 {% extends "base.html" %} {% block content %}
-<div class="wrapper">
-  <section class="form-left">
-    <h1 class="white">Client detail</h1>
-    <p class="white">Update this Client's details!</p>
-  </section>
-  <section class="form-right">
-    <table class="table">
-      <tr>
-        <td></td>
-        <th>Client Details</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>Name</th>
-        <td>{{client.name }}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>Telephone</th>
-        <td>{{client.tel }}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Email</th>
-        <td>{{client.email }}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Notes</th>
-        <td>{{client.notes }}</td>
 
-        <td class="edit-buttons">
-          <a class="btn btn-primary" href="/clients/{{client.id}}/update"
-            >Edit Client</a
+<section>
+  <div class="section-header purple">
+    <h2>{{client.name }}</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Here's everything we know</h2>
+
+    <div class="section">
+      <div class="field-list">
+        <div class="section">
+          <img class="section-image" src="https://placebeard.it/200x200" />
+        </div>
+        <div class="details">
+          <div class="attributes">
+            <p class="strong">Name</p>
+            <p class="strong">Telephone</p>
+            <p class="strong">Email</p>
+            <p class="strong">Notes</p>
+          </div>
+
+          <div class="values">
+            <p>{{client.name }}</p>
+            <p>{{client.tel }}</p>
+            <p>{{client.email }}</p>
+            <p>{{client.notes }}</p>
+            <br />
+            <a href="/clients/{{client.id}}/update" class="button purple more"
+              >Edit deets</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% for dog in clients_dogs %}
+<section>
+  <div class="section-header purple">
+    <h2>{{dog.name}}</h2>
+  </div>
+  <div class="section-main yellow">
+    <div class="section">
+      <div class="field-list">
+        <div class="section">
+          <img class="section-image" src="{{dog.image}}" />
+        </div>
+        <div class="details">
+          <div class="attributes">
+            <p class="strong">Name</p>
+            <p class="strong">Description</p>
+            <p class="strong">D.O.B</p>
+            <p class="strong">Breed</p>
+            <p class="strong">Neutered</p>
+            <p class="strong">Vaccination</p>
+            <p class="strong">Checked in?</p>
+          </div>
+
+          <div class="values">
+            <p>{{dog.name}}</p>
+            <p>{{dog.description}}</p>
+            <p>{{dog.dob}}</p>
+            <p>{{dog.breed}}</p>
+            {% if dog.neutered %}
+            <p>Yes</p>
+            {% else %}
+            <p>No</p>
+            {% endif %}
+            <p>{{dog.vaccinations}}</p>
+            {% if dog.checked_in %}
+            <p>Yes</p>
+            {% else %}
+            <p>No</p>
+            {% endif %}
+            <p>
+              <a href="/clients/{{dog.owner.id}}">{{dog.owner.name}}</a>
+            </p>
+          </div>
+          <a href="/dogs/{{dog.id}}/update" class="button purple more"
+            >Edit deets</a
           >
-        </td>
-      </tr>
-      <tr>
-        <th></th>
-        <th>Dog Details</th>
-        <th></th>
-      </tr>
-      {% for dog in clients_dogs %}
-      <tr>
-        <th>Image</th>
-        <td><img src="{{dog.image}}" class="thumb" /></td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Name</th>
-        <td>{{dog.name}}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Description</th>
-        <td>{{dog.description}}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>D.O.B</th>
-        <td>{{dog.dob}}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Breed</th>
-        <td>{{dog.breed}}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Neutered</th>
-        <td>{{dog.neutered}}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Vaccination</th>
-        <td>{{dog.vaccinations}}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Checked in?</th>
-        <td>{{dog.checked_in}}</td>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Staff Responsible</th>
-        <td>{{dog.staff}}</td>
-        <td class="edit-buttons">
-          <a class="btn btn-primary" href="/dogs/{{dog.id}}/update">Edit Dog</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </table>
-  </section>
-</div>
-{% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %} {% endblock %}

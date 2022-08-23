@@ -1,35 +1,37 @@
 {% extends "base.html" %} {% block content %}
+<!-- Client Section -->
 <section>
-  <div class="hero">
-    <h1 class="title">Client list</h1>
+  <div class="section-header purple">
+    <h2>Hoomans</h2>
   </div>
-</section>
-<section>
-  <table class="table">
-    <tr>
-      <th>Client name</th>
-      <th>Client tel</th>
-      <th>Client email</th>
-      <th>Client notes</th>
-      <th></th>
-    </tr>
-    {% for client in clients %}
-    <tr>
-      <td>{{client.name }}</td>
-      <td>{{client.tel }}</td>
-      <td>{{client.email }}</td>
-      <td>{{client.notes }}</td>
-     
-        <td class="edit-buttons">
-        <a class="btn btn-primary" href="/clients/{{client.id}}">View</a>
-      </td>
-    </tr>
-    {% endfor %} 
-   
+  <div class="section-main yellow">
+    <h2>Who's paying the bills</h2>
+    <div class="section">
+      <table class="table">
+        <tr class="table-header">
+          <th>Name</th>
+          <th>Email</th>
+          <th>Telephone</th>
+          <th>Notes</th>
+          <th></th>
+        </tr>
 
-    
-    </tr>
-  </table>
+        {% for client in clients %}
+        <tr>
+          <td>{{client.name }}</td>
+          <td>{{client.email }}</td>
+          <td>{{client.tel }}</td>
+          <td>{{client.notes }}</td>
+          <td>
+            <a href="/clients/{{client.id}}" class="button purple"
+              >More deets</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
 </section>
 
 {% endblock %}

@@ -80,7 +80,9 @@ input[type='submit'] {
   padding: 15px;
   margin-left: 40px;
 }
-
+.logo-text > a {
+  color: #ffffff;
+}
 .logo-text {
   font-size: 2rem;
   color: #ffffff;

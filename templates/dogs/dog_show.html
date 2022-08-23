@@ -41,18 +41,18 @@
             <p>No</p>
             {% endif %}
             <p>
-              <a href="/clients/{{dog.owner.id}}/update">{{dog.owner.name}}</a>
+              <a href="/clients/{{dog.owner.id}}">{{dog.owner.name}}</a>
             </p>
             <p>
-              <a href="/staff/{{dog.staff.id}}/update">{{dog.staff.name}}</a>
+              <a href="/staff/{{dog.staff.id}}">{{dog.staff.name}}</a>
             </p>
-            <a href="/dogs/{{dog.id}}/update" class="button purple more"
-              >Edit deets</a
-            >
           </div>
+          <a href="/dogs/{{dog.id}}/update" class="button purple more"
+            >Edit deets</a
+          >
         </div>
       </div>
     </div>
   </div>
-  <section>{% endblock %}</section>
 </section>
+{% endblock %}
