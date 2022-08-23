@@ -2,6 +2,14 @@
 <section>
   <div class="hero">
     <h1 class="title">Dog list</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+        <p>{{msg}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
   </div>
 </section>
 <section>
@@ -11,6 +19,7 @@
       <th>Dog name</th>
       <th>Dog Breed</th>
       <th>Dog description</th>
+      <th>Check in/out</th>
       <th>Owner</th>
       <th></th>
     </tr>
@@ -20,6 +29,29 @@
       <td>{{dog.name}}</td>
       <td>{{dog.breed}}</td>
       <td>{{dog.description}}</td>
+
+      {% if dog.checked_in%}
+      <td>
+      <form
+        class="form-inline"
+        action="/dogs/{{ dog.id }}/checkout"
+        method="POST"
+      >
+        <input class="btn btn-primary" type="submit" value="Check out" />
+      </form>
+</td>
+    {% else %}
+    <td>
+      <form
+        class="form-inline"
+        action="/dogs/{{ dog.id }}/checkin"
+        method="POST"
+      >
+        <input class="btn btn-primary" type="submit" value="Check in" />
+      </form>
+      </td>
+    {% endif %}
+
       <th>{{dog.owner.name}}</th>
         <td class="edit-buttons">
         <a class="btn btn-primary" href="/dogs/{{dog.id}}">View</a>

@@ -54,8 +54,9 @@ def delete(dog):
 def update_dog(dog):
     sql = "UPDATE dogs SET (name, description, breed, dob, neutered, vaccinations, checked_in, staff, image, owner) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [dog.name, dog.description,
-              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff, dog.image, dog.owner.id, dog.id]
-    run_sql(sql, values)
+              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff.id, dog.image, dog.owner.id, dog.id]
+    result = run_sql(sql, values)
+    return result
 
 
 def check_dog_in_or_out(id):

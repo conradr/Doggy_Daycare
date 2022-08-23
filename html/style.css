@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  font-size: 18px;
+  background-color: #fad92f;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0.0225em;
+  font-weight: 100;
+}
+p {
+  font-size: 1.1em;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+h1 {
+  font-size: 5rem;
+}
+h2 {
+  font-size: 4rem;
+}
+h3 {
+  font-size: 3rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-list {
+  display: flex;
+  padding: 15px;
+}
+
+.nav {
+  padding: 20px;
+  font-size: 2em;
+  font-family: 'League Gothic';
+}
+.nav > a {
+  color: #212120;
+}
+.logo {
+  background-color: #212120;
+  padding: 15px;
+  margin-left: 40px;
+}
+
+.logo-text {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+section {
+  padding: 2.2em;
+}
+
+.section-header {
+  background-color: #ff1192;
+  padding: 10px;
+  border-top: 5px solid #212120;
+  border-left: 5px solid #212120;
+  border-right: 10px solid #212120;
+}
+
+.section-header > h2 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.section-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 10px;
+  background-color: #faff11;
+  border-top: 5px solid #212120;
+  border-left: 5px solid #212120;
+  border-right: 10px solid #212120;
+  border-bottom: 10px solid #212120;
+}
+
+.card {
+  background-color: #ff1192;
+  padding: 10px;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
+}
+
+.card-inner-top {
+  display: flex;
+  flex-grow: 1;
+}
+
+.card-inner-top > h3 {
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+.card-image {
+  width: 150px;
+}
+
+.card-inner-bottom {
+  background-color: #ffffff;
+  padding: 5px;
+  margin-top: 10px;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
+  margin-bottom: 20px;
+}
+
+.card-inner-footer {
+  text-align: right;
+  padding: 5px;
+}
+.button {
+  font-family: 'League Gothic';
+  background-color: #faff11;
+  padding: 5px;
+  font-size: 1.4em;
+  color: #212120;
+  border-right: 5px solid #212120;
+  border-bottom: 5px solid #212120;
+}
+@media only screen and (min-width: 800px) {
+  .logo-text {
+    font-size: 3rem;
+  }
+
+  .section-header > h2 {
+    font-size: 3rem;
+    color: #ffffff;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+}

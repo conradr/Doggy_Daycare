@@ -1,3 +1,50 @@
 {% extends "base.html"%} {% block content %}
-<p>it's doggy daycare time</p>
+<section>
+  <div class="hero">
+    <h1 class="title">Dog currently checked in</h1>
+    <a class="btn btn-primary" href="/dogs">Check in more Dogs</a>
+  </div>
+</section>
+<section>
+  <table class="table">
+    <tr>
+      <th>Dog image</th>
+      <th>Dog name</th>
+      <th>Dog Breed</th>
+      <th>Dog description</th>
+      <th>Check in/out</th>
+      <th>Owner</th>
+      <th></th>
+    </tr>
+    {% for dog in dogs %}
+    
+    {% if dog.checked_in %}
+    <tr>
+      <td><img src="{{dog.image}}" class="thumb"/></td>
+      <td>{{dog.name}}</td>
+      <td>{{dog.breed}}</td>
+      <td>{{dog.description}}</td>
+      <td>
+      <form
+        class="form-inline"
+        action="/dogs/{{ dog.id }}/checkout"
+        method="POST"
+      >
+        <input class="btn btn-primary" type="submit" value="Check out" />
+      </form>
+</td>
+
+      <th>{{dog.owner.name}}</th>
+        <td class="edit-buttons">
+        <a class="btn btn-primary" href="/dogs/{{dog.id}}">View</a>
+      </td>
+    </tr>
+     {% endif %}
+     {% endfor %}
+    </tr>
+  </table>
+    
+</section>
+    
+
 {% endblock %}

@@ -38,7 +38,11 @@
     </tr>
     <tr>
       <th>Neutered</th>
-      <td>{{dog.neutered}}</td>
+      {% if dog.neutered %}
+      <td>Yes</td>
+      {% else %}
+      <td>No</td>
+      {% endif %}
       <th></th>
     </tr>
     <tr>
@@ -48,7 +52,11 @@
     </tr>
      <tr>
       <th>Checked in?</th>
-      <td>{{dog.checked_in}}</td>
+      {% if dog.checked_in %}
+      <td>Yes</td>
+      {% else %}
+      <td>No</td>
+      {% endif %}
       <th></th>
     </tr>
      <tr>
@@ -58,7 +66,7 @@
     </tr>
     <tr>
       <th>Staff Responsible</th>
-      <td>{{dog.staff}}</td>
+      <td>{{dog.staff.name}}</td>
        <td class="edit-buttons">
         <a class="btn btn-primary" href="/dogs/{{dog.id}}/update">Edit Dog</a>
       </td>

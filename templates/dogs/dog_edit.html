@@ -8,7 +8,7 @@
   <section class="form-right">
     <form action="/dogs/{{dog.id}}" method="post">
       <div class="form-field">
-        <label for="client_name">Dog Name</label><br />
+        <label for="dog_name">Dog Name</label><br />
         <input
           class="form-control"
           type="text"
@@ -17,8 +17,9 @@
           value="{{dog.name}}"
         />
       </div>
+      
       <div class="form-field">
-        <label for="client_notes">Description</label><br />
+        <label for="dog_description">Description</label><br />
         <textarea
           class="form-control"
           id="dog_description"
@@ -32,7 +33,7 @@
       </div>
 
       <div class="form-field">
-        <label for="client_email">D.O.B</label><br />
+        <label for="dog_dob">D.O.B</label><br />
         <input
           class="form-control"
           type="text"
@@ -42,7 +43,7 @@
         />
       </div>
       <div class="form-field">
-        <label for="client_address">Breed</label><br />
+        <label for="dog_breed">Breed</label><br />
         <input
           class="form-control"
           type="text"
@@ -66,12 +67,12 @@
       </div>
       <!--neutered-->
       <div class="form-field">
-        <label for="client_tel">Vaccination</label><br />
+        <label for="dog_vaccinations">Vaccination</label><br />
         <input
           class="form-control"
           type="text"
           name="dog_vaccinations"
-          id="dog_dvaccinations"
+          id="dog_vaccinations"
           value="{{dog.vaccinations}}"
         />
       </div>
@@ -81,7 +82,7 @@
         <select class="form-control" name="dog_owner" id="dog_owner">
           {% for client in all_clients %}
             
-          <option value="{{client.name}}" {% if client.name == dog.owner.name %} selected="selected"{% endif %}>{{client.name}}</option>
+          <option value="{{client.id}}" {% if client.name == dog.owner.name %} selected="selected"{% endif %}>{{client.name}}</option>
           {% endfor %}
         </select>
       </div>
@@ -90,40 +91,26 @@
         <select class="form-control" name="staff_responsible" id="staff_responsible">
           {% for staff_member in all_staff %}
             
-          <option value="{{staff_member.name}}" {% if staff_member.name == dog.staff.name %} selected="selected"{% endif %}>{{staff_member.name}}</option>
+          <option value="{{staff_member.id}}" {% if staff_member.name == dog.staff.name %} selected="selected"{% endif %}>{{staff_member.name}}</option>
           {% endfor %}
         </select>
       </div>
-      <input type="submit" class="btn btn-primary" value="Save Client" />
+      <div class="form-field">
+        <label for="dog_checked_in">Checked in</label>
+
+        <select class="form-control" name="dog_checked_in" id="dog_checked_in">
+          {% if dog.checked_in %}
+          <option value="True" selected="selected">Yes</option>
+          <option value="False">No</option>
+          {% else %}
+          <option value="True">Yes</option>
+          <option value="False" selected="selected">No</option>
+          {% endif %}
+        </select>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Save Dog" />
     </form>
-    <!--checcked in-->
-    {% if dog.checked_in%}
-
-    <div class="status">
-      <p class="pill green">Checked in</p>
-
-      <form
-        class="form-inline"
-        action="/dogs/{{ dog.id }}/checkin_out"
-        method="POST"
-      >
-        <input class="btn btn-primary" type="submit" value="Check out" />
-      </form>
-    </div>
-
-    {% else %}
-
-    <div class="status">
-      <p class="pill red">Checked out</p>
-      <form
-        class="form-inline"
-        action="/dogs/{{ dog.id }}/checkin_out"
-        method="POST"
-      >
-        <input class="btn btn-primary" type="submit" value="Check in" />
-      </form>
-    </div>
-    {% endif %}
+  
     <form action="/dogs/{{ dog.id }}/delete" method="POST">
       <input class="btn red-danger right" type="submit" value="delete" />
     </form>
