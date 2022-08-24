@@ -1,14 +1,14 @@
 {% extends "base.html" %} {% block content %}
 <!-- Client Section -->
 <section>
-  <div class="section-header purple">
+  <div class="section-header red">
     <h2>Reports</h2>
   </div>
   <div class="section-main yellow">
     <h2>Check out these amazing reports</h2>
     {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
     messages %}
-    <p class="flash">{{msg}}</p>
+    <p class="flash">&#127881; {{msg}}</p>
     {% endfor %} {% endif %} {% endwith %}
     <div class="section">
       <table class="table">

@@ -25,11 +25,12 @@ def save_update_comment(id):
     dog = dog_repo.select(request.form['dog_id'])
     staff = staff_repo.select(request.form['staff_id'])
     comment = request.form['comment']
-    comment_object = Comment(dog, staff, comment)
+    comment_object = Comment(staff, dog, comment)
+    print(comment_object.__dict__)
     report_repo.save_comment(comment_object)
-    report_object = report_repo.select(id)
-    comments = report_repo.get_comments_by_dog(report_object.dog)
-    flash(f" Comment added! ", "info")
+    #report_object = report_repo.select(id)
+    #comments = report_repo.get_comments_by_dog(report_object.dog)
+    flash(f"Comment added! ", "info")
     redirect_url = f'/reports/{id}'
     return redirect(redirect_url)
 

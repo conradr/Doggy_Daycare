@@ -66,7 +66,7 @@ def get_comments_by_dog(dog):
 
 
 def save_comment(comment):
-    sql = "INSERT INTO comments(dog_id, staff_id, comment) VALUES (%s,%s,%s) returning id"
+    sql = "INSERT INTO comments(dog_id, staff_id, comment) VALUES (%s,%s,%s) RETURNING id"
     values = [comment.dog.id, comment.staff.id, comment.comment]
     result = run_sql(sql, values)
     comment.id = result[0]['id']

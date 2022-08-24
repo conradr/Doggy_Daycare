@@ -87,7 +87,11 @@ input[type='submit'] {
   font-size: 2rem;
   color: #ffffff;
 }
-
+.flash {
+  background-color: #ffdd2d;
+  padding: 10px;
+  text-align: center;
+}
 section {
   padding: 2.2em;
 }
