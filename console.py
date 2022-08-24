@@ -4,6 +4,7 @@ from models.staff_model import Staff
 import repositories.client_repo as client_repo
 import repositories.dog_repo as dog_repo
 import repositories.staff_repo as staff_repo
+import repositories.report_repo as report_repo
 
 
 # # print(client_repo.select(1).__dict__)
@@ -32,6 +33,8 @@ import repositories.staff_repo as staff_repo
 
 # dog_repo.save(dog1)
 # print(client_repo.select(1).id)
-# print(staff_repo.select(2).__dict__)
+# print(report_repo.select(1).dog.owner.name)
 
-#staff_member = staff_repo.select(1)
+report_list = report_repo.select_all()
+for report in report_list:
+    print(report.__dict__)

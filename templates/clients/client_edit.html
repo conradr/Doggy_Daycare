@@ -1,70 +1,85 @@
 {% extends "base.html" %} {% block content %}
-<div class="wrapper">
-  <section class="form-left">
-    <h1 class="white">Edit Client</h1>
-    <p class="white">Update this Client's details!</p>
-  </section>
-  <section class="form-right">
-    <form action="/clients/{{client.id}}" method="post">
-      <div class="form-field">
-        <label for="client_name">Client Name</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_name"
-          id="client_name"
-          value="{{client.name}}"
-        />
+<section>
+  <div class="section-header purple">
+    <h2>Edit Mary Fleabody</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Fill in the new deets</h2>
+    <div class="field-list">
+      <div class="section">
+        <img class="section-image" src="https://placedog.net/300/300?id=9" />
       </div>
-      <div class="form-field">
-        <label for="client_tel">Telephone</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_tel"
-          id="client_tel"
-          value="{{client.tel}}"
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_email">Email</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_email"
-          id="client_email"
-          value="{{client.email}}"
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_address">Address</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_address"
-          id="client_address"
-          value="{{client.address}}"
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_notes">Notes</label><br />
-        <textarea
-          class="form-control"
-          id="client_notes"
-          name="client_notes"
-          rows="8"
-          cols="50"
-        >
+      <div class="fields">
+        <form action="/clients/{{client.id}}" method="post">
+          <div class="form-field">
+            <label for="client_name">Client Name</label><br />
+            <input
+              class="form-control"
+              type="text"
+              name="client_name"
+              id="client_name"
+              value="{{client.name}}"
+            />
+          </div>
+          <div class="form-field">
+            <label for="client_tel">Telephone</label><br />
+            <input
+              class="form-control"
+              type="text"
+              name="client_tel"
+              id="client_tel"
+              value="{{client.tel}}"
+            />
+          </div>
+          <div class="form-field">
+            <label for="client_email">Email</label><br />
+            <input
+              class="form-control"
+              type="text"
+              name="client_email"
+              id="client_email"
+              value="{{client.email}}"
+            />
+          </div>
+          <div class="form-field">
+            <label for="client_address">Address</label><br />
+            <input
+              class="form-control"
+              type="text"
+              name="client_address"
+              id="client_address"
+              value="{{client.address}}"
+            />
+          </div>
+          <div class="form-field">
+            <label for="client_notes">Notes</label><br />
+            <textarea
+              class="form-control"
+              id="client_notes"
+              name="client_notes"
+              rows="8"
+              cols="50"
+            >
 {{client.notes}}
 </textarea
-        >
-      </div>
+            >
+          </div>
 
-      <input type="submit" class="btn btn-primary" value="Save Client" />
-    </form>
-    <form action="/clients/{{ client.id }}/delete" method="POST">
-      <input class="btn red-danger right" type="submit" value="delete" />
-    </form>
-  </section>
-</div>
+          <input
+            type="submit"
+            class="button purple right margin"
+            value="Save Client"
+          />
+        </form>
+      </div>
+      <div class="slogan">
+        <h5 class="catchline">ANYTHING IS PAWSIBLE WHEN YOU HAVE A DOG!</h5>
+        <form action="/clients/{{ client.id }}/delete" method="POST">
+          <input class="button red right" type="submit" value="delete" />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

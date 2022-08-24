@@ -1,12 +1,17 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="wrapper">
-  <section class="form-left">
-    <h1 class="white">Edit Dog</h1>
-    <p class="white">Update this Dog's details!</p>
-  </section>
-  <section class="form-right">
-    <form action="/dogs/{{dog.id}}" method="post">
+<section>
+  <div class="section-header pink">
+    <h2>Edit {{dog.name}}</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Fill in the new deets</h2>
+    <div class="field-list">
+      <div class="section">
+        <img class="section-image" src="https://placedog.net/300/300?id=9" />
+      </div>
+      <div class="fields">
+        <form action="/dogs/{{dog.id}}" method="post">
       <div class="form-field">
         <label for="dog_name">Dog Name</label><br />
         <input
@@ -108,12 +113,17 @@
           {% endif %}
         </select>
       </div>
-      <input type="submit" class="btn btn-primary" value="Save Dog" />
+      <input type="submit" class="button pink" value="Save Dog" />
     </form>
-  
-    <form action="/dogs/{{ dog.id }}/delete" method="POST">
-      <input class="btn red-danger right" type="submit" value="delete" />
-    </form>
-  </section>
-</div>
+      </div>
+      <div class="slogan">
+        <h5 class="catchline">ANYTHING IS PAWSIBLE WHEN YOU HAVE A DOG!</h5>
+        <form action="/dogs/{{ dog.id }}/delete" method="POST">
+          <input class="button red right" type="submit" value="delete" />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

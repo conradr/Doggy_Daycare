@@ -68,6 +68,11 @@ def check_dog_in_or_out(id):
     return dog_to_check_in
 
 
+def get_comments_by_do_id(id):
+    sql_comment_on_dog_by_id = "SELECT comment from comments WHERE dog_id = 1"
+    sql_comment_by_staff = "select staff.name, comments.comment from comments join staff on staff.id = comments.staff_id where staff.id = 1"
+
+
 # def show_dogs_owner():
 #     dogs_owner = []
 #     sql = "SELECT clients.* FROM clients INNER JOIN dogs ON dogs.owner = clients.id WHERE dogs.id = %s"

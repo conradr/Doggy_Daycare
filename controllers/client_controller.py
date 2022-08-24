@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask import Blueprint
 from models.client_model import Client
 from models.dog_model import Dog
@@ -33,6 +33,8 @@ def save_update_client(id):
     client = Client(client_name, client_tel, client_email,
                     client_address, client_notes, id)
     client_repo.update_client(client)
+    flash(f" {client.name} updated", "info")
+
     return redirect('/clients')
 
 

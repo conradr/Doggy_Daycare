@@ -6,6 +6,10 @@
   </div>
   <div class="section-main yellow">
     <h2>Who's paying the bills</h2>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <p class="flash">{{msg}}</p>
+    {% endfor %} {% endif %} {% endwith %}
     <div class="section">
       <table class="table">
         <tr class="table-header">
