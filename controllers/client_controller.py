@@ -70,4 +70,5 @@ def save_new_client():
     # author = ar.select_author_by_id(id)
     # author_object = Author[author_name, id]
     client_repo.save(client)
+    flash(f" {client_name} created", "info")
     return redirect('/clients')

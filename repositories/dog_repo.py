@@ -39,7 +39,7 @@ def select_all():
 def save(dog):
     sql = "INSERT INTO dogs(name, description, breed, dob, neutered, vaccinations, checked_in, staff, image, owner) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"
     values = [dog.name, dog.description,
-              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff, dog.image, dog.owner.id]
+              dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff.id, dog.image, dog.owner.id]
     result = run_sql(sql, values)
     dog.id = result[0]['id']
     return dog

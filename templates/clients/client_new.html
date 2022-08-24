@@ -1,64 +1,72 @@
 {% extends "base.html" %} {% block content %}
-<div class="wrapper">
-  <section class="form-left">
-    <h1 class="white">New Client</h1>
-    <p class="white">Create a new client</p>
-  </section>
-  <section class="form-right">
-    <form action="/clients/new" method="post">
-      <div class="form-field">
-        <label for="client_name">Client Name</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_name"
-          id="client_name"
-          value=""
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_tel">Telephone</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_tel"
-          id="client_tel"
-          value=""
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_email">Email</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_email"
-          id="client_email"
-          value=""
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_address">Address</label><br />
-        <input
-          class="form-control"
-          type="text"
-          name="client_address"
-          id="client_address"
-          value=""
-        />
-      </div>
-      <div class="form-field">
-        <label for="client_notes">Notes</label><br />
-        <textarea
-          class="form-control"
-          id="client_notes"
-          name="client_notes"
-          rows="8"
-          cols="50"
-          value=""
-        ></textarea>
-      </div>
-      <input type="submit" class="btn btn-primary" value="Add Client" />
-    </form>
-  </section>
-</div>
+<section>
+  <div class="section-header purple">
+    <h2>New Client</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>What's the scoop?</h2>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <p class="flash">{{msg}}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="section">
+      <form action="/clients/new" method="post">
+        <div class="form-field">
+          <label for="client_name">Client Name</label><br />
+          <input
+            class="form-control"
+            type="text"
+            name="client_name"
+            id="client_name"
+            value=""
+          />
+        </div>
+        <div class="form-field">
+          <label for="client_tel">Telephone</label><br />
+          <input
+            class="form-control"
+            type="text"
+            name="client_tel"
+            id="client_tel"
+            value=""
+          />
+        </div>
+        <div class="form-field">
+          <label for="client_email">Email</label><br />
+          <input
+            class="form-control"
+            type="text"
+            name="client_email"
+            id="client_email"
+            value=""
+          />
+        </div>
+        <div class="form-field">
+          <label for="client_address">Address</label><br />
+          <input
+            class="form-control"
+            type="text"
+            name="client_address"
+            id="client_address"
+            value=""
+          />
+        </div>
+        <div class="form-field">
+          <label for="client_notes">Notes</label><br />
+          <textarea
+            class="form-control"
+            id="client_notes"
+            name="client_notes"
+            rows="8"
+            cols="50"
+            value=""
+          ></textarea>
+        </div>
+        <br />
+        <input type="submit" class="button purple" value="Add Client" />
+      </form>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

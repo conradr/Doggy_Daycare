@@ -1,10 +1,10 @@
 {% extends "base.html" %} {% block content %}
 <section>
   <div class="section-header purple">
-    <h2>{{report.dog.name}}</h2>
+    <h2>{{report.dog.name}}'s report card</h2>
   </div>
   <div class="section-main yellow">
-    <h2>Here's everything we know</h2>
+    <h2>Oh what a day!</h2>
 
     <div class="section">
       <div class="field-list">
@@ -50,10 +50,18 @@
                 >{{report.dog.staff.name}}</a
               >
             </p>
-            {% for comment in comments %} {{comment.comment}} {% endfor %}
           </div>
         </div>
       </div>
+      {% for comment in comments %}
+      <div class="details">
+        <img
+          class="card-image"
+          src="https://secure.gravatar.com/avatar/126c2fc1f7f42987c13ce8b4230b7099?s=96&d=https%3A%2F%2Fcdn.jotfor.ms%2Fassets%2Fimg%2Fv4%2Favatar%2FPodo-Avatar2-01.png&r=g"
+        />
+        <p class="comment">{{comment.comment}}</p>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

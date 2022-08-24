@@ -93,6 +93,8 @@ section {
 }
 
 .section-header {
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   border-top: 5px solid #212120;
   border-left: 5px solid #212120;
@@ -224,13 +226,16 @@ section {
   border-right: 5px solid #212120;
   border-bottom: 5px solid #212120;
   margin: 20px;
-  width: 70%;
+  width: 90%;
 }
 .attributes {
   padding: 20px;
 }
 .values {
   padding: 20px;
+}
+.comment {
+  padding: 10px;
 }
 table {
   width: 100%;

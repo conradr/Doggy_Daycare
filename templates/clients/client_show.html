@@ -6,6 +6,10 @@
   </div>
   <div class="section-main yellow">
     <h2>Here's everything we know</h2>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <p class="flash">{{msg}}</p>
+    {% endfor %} {% endif %} {% endwith %}
 
     <div class="section">
       <div class="field-list">
@@ -27,7 +31,7 @@
             <p>{{client.notes }}</p>
             <br />
             <a href="/clients/{{client.id}}/update" class="button purple more"
-              >Edit deets</a
+              >Edit Hooman</a
             >
           </div>
         </div>
@@ -78,7 +82,7 @@
             </p>
           </div>
           <a href="/dogs/{{dog.id}}/update" class="button purple more"
-            >Edit deets</a
+            >Edit Doggo</a
           >
         </div>
       </div>

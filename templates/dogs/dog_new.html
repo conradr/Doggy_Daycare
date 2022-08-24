@@ -1,0 +1,121 @@
+{% extends "base.html" %} {% block content %}
+
+<section>
+  <div class="section-header pink">
+    <h2>New Doggo</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Fill in the new deets</h2>
+    <div class="field-list">
+      <div class="section">
+        <img class="section-image" src="https://placedog.net/300/300?id=45" />
+      </div>
+      <div class="fields">
+        <form action="/dogs/new" method="post">
+          <div class="form-field">
+            <label for="dog_name">Dog Name</label><br />
+            <input
+              class="form-control"
+              type="text"
+              name="dog_name"
+              id="dog_name"
+              value=""
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="dog_description">Description</label><br />
+            <textarea
+              class="form-control"
+              id="dog_description"
+              name="dog_description"
+              rows="8"
+              cols="50"
+            ></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="dog_dob">D.O.B</label><br />
+            <input
+              class="form-control"
+              type="date"
+              name="dog_dob"
+              id="dog_dob"
+              value=""
+            />
+          </div>
+          <div class="form-field">
+            <label for="dog_breed">Breed</label><br />
+            <input
+              class="form-control"
+              type="text"
+              name="dog_breed"
+              id="dog_breed"
+              value=""
+            />
+          </div>
+          <div class="form-field">
+            <label for="dog_neutered">Neutered</label>
+
+            <select class="form-control" name="dog_neutered" id="dog_neutered">
+              <option value="True" selected="selected">Yes</option>
+              <option value="False">No</option>
+            </select>
+          </div>
+          <!--neutered-->
+          <div class="form-field">
+            <label for="dog_vaccinations">Vaccination</label><br />
+            <input
+              class="form-control"
+              type="text"
+              name="dog_vaccinations"
+              id="dog_vaccinations"
+              value=""
+            />
+          </div>
+          <!--owner-->
+          <div class="form-field">
+            <label for="dog_owner">Owner</label>
+            <select class="form-control" name="dog_owner" id="dog_owner">
+              {% for client in client_list %}
+
+              <option value="{{client.id}}">{{client.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="staff_responsible">Staff responsible</label>
+            <select
+              class="form-control"
+              name="staff_responsible"
+              id="staff_responsible"
+            >
+              {% for staff_member in staff_list %}
+
+              <option value="{{staff_member.id}}">{{staff_member.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="dog_checked_in">Checked in</label>
+
+            <select
+              class="form-control"
+              name="dog_checked_in"
+              id="dog_checked_in"
+            >
+              <option value="True" selected="selected">Yes</option>
+              <option value="False">No</option>
+            </select>
+          </div>
+          <input type="submit" class="button pink" value="Save Dog" />
+        </form>
+      </div>
+      <div class="slogan">
+        <h5 class="catchline">ANYTHING IS PAWSIBLE WHEN YOU HAVE A DOG!</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

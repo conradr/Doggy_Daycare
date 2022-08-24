@@ -68,3 +68,31 @@ def check_dog_out_from_daycare(id):
     dog_repo.update_dog(dog_object)
     flash(f" {dog_object.name} checked out", "info")
     return redirect('/dogs')
+
+
+@dog_blueprint.route('/dogs/new')
+def new_dog_form():
+    client_list = client_repo.select_all()
+    staff_list = staff_repo.select_all()
+    return render_template('dogs/dog_new.html', client_list=client_list, staff_list=staff_list)
+
+
+@dog_blueprint.route('/dogs/new', methods=['POST'])
+def save_dog():
+    random_number = randint(0, 30)
+    dog_image = f"https://placedog.net/110/200/?id={random_number}"
+    dog_name = request.form['dog_name']
+    dog_breed = request.form['dog_breed']
+    dog_description = request.form['dog_description']
+    dog_dob = request.form['dog_dob']
+    dog_neutered = request.form['dog_neutered']
+    dog_vaccinations = request.form['dog_vaccinations']
+    dog_owner = client_repo.select(request.form['dog_owner'])
+    dog_checked_in = request.form['dog_checked_in']
+    staff_responsible = staff_repo.select(request.form['staff_responsible'])
+    dog = Dog(dog_name, dog_description, dog_breed, dog_dob, dog_neutered,
+              dog_vaccinations, dog_checked_in, staff_responsible, dog_image, dog_owner)
+    print(dog.__dict__)
+    dog_repo.save(dog)
+    flash(f" {dog.name} saved!", "info")
+    return redirect('/dogs')
