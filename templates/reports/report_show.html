@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+<section>
+  <div class="section-header purple">
+    <h2>{{dog.name}} belongs to {{dog.owner.name}}</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Here's everything we know</h2>
+
+    <div class="section">
+      <div class="field-list">
+        <div class="section">
+          <img class="section-image" src="{{dog.image}}" />
+        </div>
+        <div class="details">
+          <div class="attributes">
+            <p class="strong">Name</p>
+            <p class="strong">Description</p>
+            <p class="strong">D.O.B</p>
+            <p class="strong">Breed</p>
+            <p class="strong">Neutered</p>
+            <p class="strong">Vaccination</p>
+            <p class="strong">Checked in?</p>
+            <p class="strong">Owner</p>
+            <p class="strong">Staff Responsible</p>
+          </div>
+
+          <div class="values">
+            <p>{{dog.name}}</p>
+            <p>{{dog.description}}</p>
+            <p>{{dog.dob}}</p>
+            <p>{{dog.breed}}</p>
+            {% if dog.neutered %}
+            <p>Yes</p>
+            {% else %}
+            <p>No</p>
+            {% endif %}
+            <p>{{dog.vaccinations}}</p>
+            {% if dog.checked_in %}
+            <p>Yes</p>
+            {% else %}
+            <p>No</p>
+            {% endif %}
+            <p>
+              <a href="/clients/{{dog.owner.id}}">{{dog.owner.name}}</a>
+            </p>
+            <p>
+              <a href="/staff/{{dog.staff.id}}">{{dog.staff.name}}</a>
+            </p>
+          </div>
+          <a href="/dogs/{{dog.id}}/update" class="button purple more"
+            >Edit deets</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

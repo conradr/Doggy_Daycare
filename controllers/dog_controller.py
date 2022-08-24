@@ -34,7 +34,7 @@ def show_dog_edit(id):
 @dog_blueprint.route('/dogs/<id>', methods=['POST'])
 def save_update_dog(id):
     random_number = randint(0, 30)
-    dog_image = f"https://placedog.net/150/150/?id={random_number}"
+    dog_image = f"https://placedog.net/110/200/?id={random_number}"
     dog_name = request.form['dog_name']
     dog_breed = request.form['dog_breed']
     dog_description = request.form['dog_description']

@@ -36,36 +36,33 @@ def select_all():
     return reports
 
 
-# def save(dog):
-#     sql = "INSERT INTO dogs(name, description, breed, dob, neutered, vaccinations, checked_in, staff, image, owner) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id"
-#     values = [dog.name, dog.description,
-#               dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff, dog.image, dog.owner.id]
-#     result = run_sql(sql, values)
-#     dog.id = result[0]['id']
-#     return dog
+def save(report):
+    sql = "INSERT INTO reports(dog_id, staff_id, description) VALUES (%s, %s, %s) RETURNING id"
+    values = [report.dog.id, report.staff.id,
+              report.description]
+    result = run_sql(sql, values)
+    report.id = result[0]['id']
+    return report
 
 
-# def delete(dog):
-#     sql = "DELETE FROM dogs WHERE id = %s"
-#     values = [dog.id]
-#     run_sql(sql, values)
+def delete(report):
+    sql = "DELETE FROM reports WHERE id = %s"
+    values = [report.id]
+    run_sql(sql, values)
 
 
-# def update_dog(dog):
-#     sql = "UPDATE dogs SET (name, description, breed, dob, neutered, vaccinations, checked_in, staff, image, owner) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
-#     values = [dog.name, dog.description,
-#               dog.breed, dog.dob, dog.neutered, dog.vaccinations, dog.checked_in, dog.staff.id, dog.image, dog.owner.id, dog.id]
-#     result = run_sql(sql, values)
-#     return result
+def update(report):
+    sql = "UPDATE reports SET (dog_id, staff_id, description) = (%s, %s, %s) WHERE id = %s"
+    values = [report.dog.id, report.staff.id, report.description, report.id]
+    result = run_sql(sql, values)
+    return result
 
 
-# def check_dog_in_or_out(id):
-#     dog_to_check_in = select(id)
-#     if dog_to_check_in.checked_in == False:
-#         dog_to_check_in.checked_in = True
-#     else:
-#         dog_to_check_in.checked_in = False
-#     return dog_to_check_in
+def get_comments_by_dog(dog):
+    sql = "select dogs.id, comments.comment from comments join dogs ON dogs.id = comments.dog_id where comments.dog_id = %s"
+    values = [dog.id]
+    result = run_sql(sql, values)
+    return result
 
 
 # def get_comments_by_do_id(id):
