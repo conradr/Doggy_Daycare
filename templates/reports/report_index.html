@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<!-- Client Section -->
+<section>
+  <div class="section-header purple">
+    <h2>Reports</h2>
+  </div>
+  <div class="section-main yellow">
+    <h2>Check out these amazing reports</h2>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <p class="flash">{{msg}}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <div class="section">
+      <table class="table">
+        <tr class="table-header">
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+
+        {% for report in reports %}
+        <tr>
+          <td><img class="card-image" src="{{report.dog.image}}" /></td>
+          <td>{{report.dog.name }}</td>
+          <td>{{report.description }}</td>
+          <td>
+            <a href="/reports/{{report.id}}" class="button purple"
+              >More deets</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

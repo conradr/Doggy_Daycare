@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <section>
   <div class="section-header purple">
-    <h2>{{dog.name}} belongs to {{dog.owner.name}}</h2>
+    <h2>{{report.dog.name}}</h2>
   </div>
   <div class="section-main yellow">
     <h2>Here's everything we know</h2>
@@ -9,7 +9,7 @@
     <div class="section">
       <div class="field-list">
         <div class="section">
-          <img class="section-image" src="{{dog.image}}" />
+          <img class="section-image" src="{{report.dog.image}}" />
         </div>
         <div class="details">
           <div class="attributes">
@@ -25,31 +25,33 @@
           </div>
 
           <div class="values">
-            <p>{{dog.name}}</p>
-            <p>{{dog.description}}</p>
-            <p>{{dog.dob}}</p>
-            <p>{{dog.breed}}</p>
-            {% if dog.neutered %}
+            <p>{{report.dog.name}}</p>
+            <p>{{report.dog.description}}</p>
+            <p>{{report.dog.dob}}</p>
+            <p>{{report.dog.breed}}</p>
+            {% if report.dog.neutered %}
             <p>Yes</p>
             {% else %}
             <p>No</p>
             {% endif %}
-            <p>{{dog.vaccinations}}</p>
-            {% if dog.checked_in %}
+            <p>{{report.dog.vaccinations}}</p>
+            {% if report.dog.checked_in %}
             <p>Yes</p>
             {% else %}
             <p>No</p>
             {% endif %}
             <p>
-              <a href="/clients/{{dog.owner.id}}">{{dog.owner.name}}</a>
+              <a href="/clients/{{report.dog.owner.id}}"
+                >{{report.dog.owner.name}}</a
+              >
             </p>
             <p>
-              <a href="/staff/{{dog.staff.id}}">{{dog.staff.name}}</a>
+              <a href="/staff/{{report.dog.staff.id}}"
+                >{{report.dog.staff.name}}</a
+              >
             </p>
+            {% for comment in comments %} {{comment.comment}} {% endfor %}
           </div>
-          <a href="/dogs/{{dog.id}}/update" class="button purple more"
-            >Edit deets</a
-          >
         </div>
       </div>
     </div>
