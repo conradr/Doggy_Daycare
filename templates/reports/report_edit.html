@@ -5,10 +5,7 @@
   </div>
   <div class="section-main yellow">
     <h2>Oh what a day!</h2>
-    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
-    messages %}
-    <p class="flash">{{msg}}</p>
-    {% endfor %} {% endif %} {% endwith %}
+
     <div class="section">
       <div class="field-list">
         <div class="section">
@@ -65,35 +62,6 @@
         <p class="comment">{{comment.comment}}</p>
       </div>
       {% endfor %}
-      <form action="/comment/{{report.id}}/add" method="post">
-        <div class="form-field">
-          <label for="comment">Comment</label><br />
-          <textarea
-            class="form-control"
-            id="comment"
-            name="comment"
-            rows="8"
-            cols="50"
-            value=""
-          ></textarea>
-          <input
-            class="form-control"
-            type="hidden"
-            name="dog_id"
-            id="dog_id"
-            value="{{report.dog.id}}"
-          />
-          <input
-            class="form-control"
-            type="hidden"
-            name="staff_id"
-            id="staff_id"
-            value="{{report.staff.id}}"
-          />
-        </div>
-        <br />
-        <input type="submit" class="button purple" value="Add Comment" />
-      </form>
     </div>
   </div>
 </section>

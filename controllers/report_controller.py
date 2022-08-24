@@ -3,7 +3,13 @@ from flask import Blueprint
 from models.client_model import Client
 from models.dog_model import Dog
 from models.staff_model import Staff
+from models.report_model import Report
+from models.comment_model import Comment
+
 import repositories.report_repo as report_repo
+import repositories.dog_repo as dog_repo
+import repositories.staff_repo as staff_repo
+
 
 report_blueprint = Blueprint("report", __name__)
 
@@ -13,6 +19,19 @@ def all_reports():
     reports = report_repo.select_all()
     return render_template('reports/report_index.html', reports=reports)
 
+
+@report_blueprint.route('/comment/<id>/add', methods=['POST'])
+def save_update_comment(id):
+    dog = dog_repo.select(request.form['dog_id'])
+    staff = staff_repo.select(request.form['staff_id'])
+    comment = request.form['comment']
+    comment_object = Comment(dog, staff, comment)
+    report_repo.save_comment(comment_object)
+    report_object = report_repo.select(id)
+    comments = report_repo.get_comments_by_dog(report_object.dog)
+    flash(f" Comment added! ", "info")
+    redirect_url = f'/reports/{id}'
+    return redirect(redirect_url)
 
 # @report_blueprint.route('/clients/<id>/update', methods=['GET'])
 # def show_author_edit(id):

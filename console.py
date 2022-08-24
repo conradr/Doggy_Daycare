@@ -2,6 +2,8 @@ from models.client_model import Client
 from models.dog_model import Dog
 from models.staff_model import Staff
 from models.report_model import Report
+from models.comment_model import Comment
+
 import repositories.client_repo as client_repo
 import repositories.dog_repo as dog_repo
 import repositories.staff_repo as staff_repo
@@ -40,13 +42,16 @@ import repositories.report_repo as report_repo
 # for report in report_list:
 #     print(report.__dict__)
 
-# dog_object = dog_repo.select(1)
-# staff_object = staff_repo.select(1)
+dog_object = dog_repo.select(2)
+staff_object = staff_repo.select(2)
 # report1 = Report('What an amazing day today. Flora was so cute',
 #                  dog_object, staff_object)
 # saved_report = report_repo.save(report1)
 # print(saved_report.__dict__)
 
-dog = report_repo.select(1)
-result = report_repo.get_comments_by_dog(dog)
-print(result)
+# dog = report_repo.select(1)
+# result = report_repo.get_comments_by_dog(dog)
+# print(result)
+
+comment1 = Comment(dog_object, staff_object, 'A lovely new comment')
+report_repo.save_comment(comment1)
